@@ -1,9 +1,12 @@
 package pages;
 
+import org.junit.Assert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import support.BasePage;
+
+import java.util.concurrent.TimeUnit;
 
 public class AddCustomerPage extends BasePage {
 
@@ -17,6 +20,10 @@ public class AddCustomerPage extends BasePage {
 
     public AddCustomerPage typeLastName(String lastName){
         return typeFieldById(lastName, "field-contactLastName", this);
+    }
+
+    public AddCustomerPage typeContactFirstName(String contactFirstName){
+        return typeFieldById(contactFirstName, "field-contactFirstName", this);
     }
 
     public AddCustomerPage typePhone(String phone){
@@ -49,18 +56,19 @@ public class AddCustomerPage extends BasePage {
 
     public AddCustomerPage selectEmployer(){
         clickCombobox("field_salesRepEmployeeNumber_chosen", this);
-        return selectComboBoxItem("//div[@class='chosen-drop']//ul[@class='chosen-results']/li[1]",this);
+        return selectComboBoxItem("//div[@class='chosen-drop']//ul[@class='chosen-results']/li[8]",this);
     }
 
     public AddCustomerPage typeCreditLimit(String creditLimit){
         return typeFieldById(creditLimit, "field-creditLimit", this);
     }
 
-    public AddCustomerPage setAddCustomer(String firstName, String lastName, String phone, String addressLine1,
+    public AddCustomerPage setAddCustomer(String firstName, String lastName, String contactFirstName, String phone, String addressLine1,
                                           String addressLine2, String city, String state, String postalCode,
                                           String country, String creditLimit){
         typeFirstName(firstName);
         typeLastName(lastName);
+        typeContactFirstName(contactFirstName);
         typePhone(phone);
         typeAddressLine1(addressLine1);
         typeAddressLine2(addressLine2);
@@ -74,8 +82,18 @@ public class AddCustomerPage extends BasePage {
         return this;
     }
 
-    public BootstrapV4ThemePage clickSaveAndGoBackToListButton(){
-        return clickButtonByID("save-and-go-back-button", new BootstrapV4ThemePage(driver));
+    public BootstrapV4ThemePage clickSaveButton(){
+        driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
+        return clickButtonByID("form-button-save", new BootstrapV4ThemePage(driver));
+    }
+
+    public AddCustomerPage verifyMsg(String validateMsg){
+        WebElement successMsg = driver.findElement(By.id("report-success"));
+        String message = successMsg.getText();
+        String[] msg= message.split("\\.");
+        String  newMessage= msg[0];
+        Assert.assertEquals(successMsg, validateMsg);
+        return this;
     }
 
 }

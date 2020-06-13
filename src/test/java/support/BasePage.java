@@ -6,6 +6,8 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.Select;
 
+import java.util.concurrent.TimeUnit;
+
 public class BasePage {
 
     protected WebDriver driver;
@@ -79,7 +81,8 @@ public class BasePage {
         return type;
     }
 
-    public String getTextById(String id) {
+    public String getTextById(String id) throws InterruptedException {
+        driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
         return driver.findElement(By.id(id)).getText();
     }
 
