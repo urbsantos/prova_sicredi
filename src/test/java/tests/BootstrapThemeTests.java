@@ -1,15 +1,10 @@
 package tests;
 
-import org.junit.Assert;
 import org.junit.Test;
-import org.openqa.selenium.By;
 import pages.AddCustomerPage;
 import pages.BootstrapV3ThemePage;
 import pages.BootstrapV4ThemePage;
 import support.PageObjectTests;
-import static org.junit.Assert.*;
-
-import static org.junit.Assert.assertEquals;
 
 public class BootstrapThemeTests extends PageObjectTests {
 
