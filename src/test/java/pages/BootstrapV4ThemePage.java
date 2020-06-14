@@ -6,6 +6,8 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import support.BasePage;
 
+import java.util.concurrent.TimeUnit;
+
 public class BootstrapV4ThemePage extends BasePage {
 
     public BootstrapV4ThemePage(WebDriver driver) {
@@ -18,7 +20,7 @@ public class BootstrapV4ThemePage extends BasePage {
     }
 
     public BootstrapV4ThemePage findCustomerByName(String value){
-//        driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+        driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
         return typeFieldByXpath(value, "//input[contains(@name, 'customerName')]", this);
     }
 
@@ -41,11 +43,11 @@ public class BootstrapV4ThemePage extends BasePage {
         return clickButtonByXpath("//button[contains(@class, 'delete-multiple-confirmation-button')]", this);
     }
 
-    public void verifyCostumerDeletedSuccessfullyMsg(){
+    public void verifyCostumerDeletedSuccessfullyMsg(String expectedMsg){
         WebElement deleteConfirmation = driver.findElement(By.xpath("//div[contains(@class, 'alert-success')]"));
         String text = deleteConfirmation.getText();
 
-        Assert.assertTrue(text.contentEquals("Your data has been successfully deleted from the database."));
+        Assert.assertTrue(text.contentEquals(expectedMsg));
     }
 
 }

@@ -84,9 +84,8 @@ public class BasePage {
         return type;
     }
 
-    public <T> T clickCombobox(String id, T type){
+    public void clickCombobox(String id){
         driver.findElement(By.id(id)).click();
-        return type;
     }
 
     public <T> T selectComboBoxItem(String xpath, T type){

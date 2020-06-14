@@ -8,6 +8,8 @@ import support.BasePage;
 
 import java.util.concurrent.TimeUnit;
 
+import static org.junit.Assert.assertEquals;
+
 public class AddCustomerPage extends BasePage {
 
     public AddCustomerPage(WebDriver driver) {
@@ -55,7 +57,7 @@ public class AddCustomerPage extends BasePage {
     }
 
     public AddCustomerPage selectEmployer(){
-        clickCombobox("field_salesRepEmployeeNumber_chosen", this);
+        clickCombobox("field_salesRepEmployeeNumber_chosen");
         return selectComboBoxItem("//div[@class='chosen-drop']//ul[@class='chosen-results']/li[8]",this);
     }
 
@@ -82,9 +84,9 @@ public class AddCustomerPage extends BasePage {
         return this;
     }
 
-    public BootstrapV4ThemePage clickSaveButton(){
+    public AddCustomerPage clickSaveButton(){
         driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
-        return clickButtonByID("form-button-save", new BootstrapV4ThemePage(driver));
+        return clickButtonByID("form-button-save", this);
     }
 
     public BootstrapV4ThemePage clickAndGoBackToListButton(){
@@ -92,13 +94,13 @@ public class AddCustomerPage extends BasePage {
         return clickButtonByID("save-and-go-back-button", new BootstrapV4ThemePage(driver));
     }
 
-    public AddCustomerPage verifyMsg(String validateMsg){
-        WebElement successMsg = driver.findElement(By.id("report-success"));
-        String message = successMsg.getText();
-        String[] msg= message.split("\\.");
-        String  newMessage= msg[0];
-        Assert.assertEquals(successMsg, validateMsg);
-        return this;
+    public void verifyMsg(String expectedMsg){
+        String actualMsg = driver.findElement(By.xpath("//*[@id=\"report-success\"]/p")).getText();
+        String[] msg= actualMsg.split("\\.");
+        String  newMessage = msg[0];
+
+        assertEquals(expectedMsg, newMessage);
+
     }
 
 }

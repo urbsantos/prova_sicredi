@@ -43,12 +43,7 @@ public class BootstrapThemeTests extends PageObjectTests {
                         "200")
                 .clickSaveButton();
 
-        String expectedMsg = "Your data has been successfully stored into the database";
-        String actualMsg = driver.findElement(By.xpath("//*[@id=\"report-success\"]/p")).getText();
-        String[] msg= actualMsg.split("\\.");
-        String  newMessage = msg[0];
-
-        assertEquals(expectedMsg, newMessage);
+        addCustomerPage.verifyMsg("Your data has been successfully stored into the database");
     }
 
     @Test
@@ -86,7 +81,9 @@ public class BootstrapThemeTests extends PageObjectTests {
 
         Thread.sleep(2000);
 
-        bootstrapV4ThemePage.verifyCostumerDeletedSuccessfullyMsg();
+        bootstrapV4ThemePage
+                .verifyCostumerDeletedSuccessfullyMsg(
+                        "Your data has been successfully deleted from the database.");
 
     }
 
