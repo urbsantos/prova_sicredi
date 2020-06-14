@@ -87,6 +87,11 @@ public class AddCustomerPage extends BasePage {
         return clickButtonByID("form-button-save", new BootstrapV4ThemePage(driver));
     }
 
+    public BootstrapV4ThemePage clickAndGoBackToListButton(){
+        driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
+        return clickButtonByID("save-and-go-back-button", new BootstrapV4ThemePage(driver));
+    }
+
     public AddCustomerPage verifyMsg(String validateMsg){
         WebElement successMsg = driver.findElement(By.id("report-success"));
         String message = successMsg.getText();

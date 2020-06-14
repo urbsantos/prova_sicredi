@@ -61,13 +61,26 @@ public class BasePage {
     }
 
     public <T> T clickButtonByID(String id, T type){
+        driver.manage().timeouts().implicitlyWait(15, TimeUnit.SECONDS);
         driver.findElement(By.id(id)).click();
         return type;
     }
 
+    public <T> T clickButtonByLinkText(String linkText, T type){
+        driver.findElement(By.linkText(linkText)).click();
+        return type;
+    }
+
+
     public <T> T typeFieldById(String value, String id, T type) {
         driver.findElement(By.id(id)).clear();
         driver.findElement(By.id(id)).sendKeys(value);
+        return type;
+    }
+
+    public <T> T typeFieldByXpath(String value, String xpath, T type) {
+        driver.findElement(By.xpath(xpath)).clear();
+        driver.findElement(By.xpath(xpath)).sendKeys(value);
         return type;
     }
 
