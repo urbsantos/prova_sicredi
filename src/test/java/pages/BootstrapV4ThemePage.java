@@ -2,11 +2,10 @@ package pages;
 
 import org.junit.Assert;
 import org.openqa.selenium.By;
+import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import support.BasePage;
-
-import java.util.concurrent.TimeUnit;
 
 public class BootstrapV4ThemePage extends BasePage {
 
@@ -19,17 +18,20 @@ public class BootstrapV4ThemePage extends BasePage {
                 new AddCustomerPage(driver));
     }
 
-    public BootstrapV4ThemePage findCustomerByName(String value){
-        driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
-        return typeFieldByXpath(value, "//input[contains(@name, 'customerName')]", this);
+    public void findCustomerByName(String value){
+        WebElement find = driver.findElement(By.xpath("//input[contains(@name, 'customerName')]"));
+        find.clear();
+        find.click();
+        find.sendKeys(value);
+        find.sendKeys(Keys.ENTER);
     }
 
     public BootstrapV4ThemePage clickSelectAllComboBox(){
         return clickButtonByXpath("//input[contains(@class, 'select-all-none')]", this);
     }
 
-    public BootstrapV4ThemePage clickDeleteButton(){
-        return clickButtonByLinkText("Delete", this);
+    public void clickDeleteButton(){
+        clickButtonByLinkText("Delete");
     }
 
     public void verifyConfirmToDeletePopupText(){
@@ -39,8 +41,8 @@ public class BootstrapV4ThemePage extends BasePage {
         Assert.assertTrue(text.contentEquals("Are you sure that you want to delete this 1 item?"));
     }
 
-    public BootstrapV4ThemePage clickPopupDeleteButton(){
-        return clickButtonByXpath("//button[contains(@class, 'delete-multiple-confirmation-button')]", this);
+    public void clickPopupDeleteButton(){
+        clickButtonByXpath("//button[contains(@class, 'delete-multiple-confirmation-button')]", this);
     }
 
     public void verifyCostumerDeletedSuccessfullyMsg(String expectedMsg){

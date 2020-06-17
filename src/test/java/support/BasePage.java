@@ -60,22 +60,19 @@ public class BasePage {
         return type;
     }
 
-    public <T> T clickButtonByID(String id, T type){
+    public void clickButtonByID(String id){
         driver.manage().timeouts().implicitlyWait(15, TimeUnit.SECONDS);
         driver.findElement(By.id(id)).click();
-        return type;
     }
 
-    public <T> T clickButtonByLinkText(String linkText, T type){
+    public void clickButtonByLinkText(String linkText){
         driver.findElement(By.linkText(linkText)).click();
-        return type;
     }
 
 
-    public <T> T typeFieldById(String value, String id, T type) {
+    public void typeFieldById(String value, String id) {
         driver.findElement(By.id(id)).clear();
         driver.findElement(By.id(id)).sendKeys(value);
-        return type;
     }
 
     public <T> T typeFieldByXpath(String value, String xpath, T type) {
@@ -88,9 +85,8 @@ public class BasePage {
         driver.findElement(By.id(id)).click();
     }
 
-    public <T> T selectComboBoxItem(String xpath, T type){
+    public <T> void selectComboBoxItem(String xpath, T type){
         driver.findElement(By.xpath(xpath)).click();
-        return type;
     }
 
     public String getTextById(String id) throws InterruptedException {

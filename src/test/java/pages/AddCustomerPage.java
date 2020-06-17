@@ -14,53 +14,53 @@ public class AddCustomerPage extends BasePage {
         super(driver);
     }
 
-    public AddCustomerPage typeFirstName(String firstName){
-        return typeFieldById(firstName, "field-customerName", this);
+    public void typeFirstName(String firstName){
+        typeFieldById(firstName, "field-customerName");
     }
 
-    public AddCustomerPage typeLastName(String lastName){
-        return typeFieldById(lastName, "field-contactLastName", this);
+    public void typeLastName(String lastName){
+        typeFieldById(lastName, "field-contactLastName");
     }
 
-    public AddCustomerPage typeContactFirstName(String contactFirstName){
-        return typeFieldById(contactFirstName, "field-contactFirstName", this);
+    public void typeContactFirstName(String contactFirstName){
+        typeFieldById(contactFirstName, "field-contactFirstName");
     }
 
-    public AddCustomerPage typePhone(String phone){
-        return typeFieldById(phone, "field-phone", this);
+    public void typePhone(String phone){
+        typeFieldById(phone, "field-phone");
     }
 
-    public AddCustomerPage typeAddressLine1(String addressLine1){
-        return typeFieldById(addressLine1, "field-addressLine1", this);
+    public void typeAddressLine1(String addressLine1){
+        typeFieldById(addressLine1, "field-addressLine1");
     }
 
-    public AddCustomerPage typeAddressLine2(String addressLine2){
-        return typeFieldById(addressLine2, "field-addressLine2", this);
+    public void typeAddressLine2(String addressLine2){
+        typeFieldById(addressLine2, "field-addressLine2");
     }
 
-    public AddCustomerPage typeCity(String city){
-        return typeFieldById(city, "field-city", this);
+    public void typeCity(String city){
+        typeFieldById(city, "field-city");
     }
 
-    public AddCustomerPage typeState(String state){
-        return typeFieldById(state, "field-state", this);
+    public void typeState(String state){
+        typeFieldById(state, "field-state");
     }
 
-    public AddCustomerPage typePostalCode(String postalCode){
-        return typeFieldById(postalCode, "field-postalCode", this);
+    public void typePostalCode(String postalCode){
+        typeFieldById(postalCode, "field-postalCode");
     }
 
-    public AddCustomerPage typePostalCountry(String country){
-        return typeFieldById(country, "field-country", this);
+    public void typePostalCountry(String country){
+        typeFieldById(country, "field-country");
     }
 
-    public AddCustomerPage selectEmployer(){
+    public void selectEmployer(){
         clickCombobox("field_salesRepEmployeeNumber_chosen");
-        return selectComboBoxItem("//div[@class='chosen-drop']//ul[@class='chosen-results']/li[8]",this);
+        selectComboBoxItem("//div[@class='chosen-drop']//ul[@class='chosen-results']/li[8]", this);
     }
 
-    public AddCustomerPage typeCreditLimit(String creditLimit){
-        return typeFieldById(creditLimit, "field-creditLimit", this);
+    public void typeCreditLimit(String creditLimit){
+        typeFieldById(creditLimit, "field-creditLimit");
     }
 
     public AddCustomerPage setAddCustomer(String firstName, String lastName, String contactFirstName, String phone, String addressLine1,
@@ -82,14 +82,14 @@ public class AddCustomerPage extends BasePage {
         return this;
     }
 
-    public AddCustomerPage clickSaveButton(){
+    public void clickSaveButton(){
         driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
-        return clickButtonByID("form-button-save", this);
+        clickButtonByID("form-button-save");
     }
 
-    public BootstrapV4ThemePage clickAndGoBackToListButton(){
+    public void clickAndGoBackToListButton(){
         driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
-        return clickButtonByID("save-and-go-back-button", new BootstrapV4ThemePage(driver));
+        clickButtonByID("save-and-go-back-button");
     }
 
     public void verifyMsg(String expectedMsg){

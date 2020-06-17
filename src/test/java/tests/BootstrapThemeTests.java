@@ -66,19 +66,19 @@ public class BootstrapThemeTests extends PageObjectTests {
 
         bootstrapV4ThemePage.clickSelectAllComboBox().clickDeleteButton();
 
-        Thread.sleep(5000);
-
-        bootstrapV4ThemePage.verifyConfirmToDeletePopupText();
-
-        Thread.sleep(2000);
-
-        bootstrapV4ThemePage.clickPopupDeleteButton();
-
-        Thread.sleep(2000);
-
-        bootstrapV4ThemePage
-                .verifyCostumerDeletedSuccessfullyMsg(
-                        "Your data has been successfully deleted from the database.");
+//        Thread.sleep(5000);
+//
+//        bootstrapV4ThemePage.verifyConfirmToDeletePopupText();
+//
+//        Thread.sleep(2000);
+//
+//        bootstrapV4ThemePage.clickPopupDeleteButton();
+//
+//        Thread.sleep(2000);
+//
+//        bootstrapV4ThemePage
+//                .verifyCostumerDeletedSuccessfullyMsg(
+//                        "Your data has been successfully deleted from the database.");
 
     }
 
