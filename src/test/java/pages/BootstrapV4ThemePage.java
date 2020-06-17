@@ -35,26 +35,28 @@ public class BootstrapV4ThemePage extends BasePage {
         clickButtonByLinkText("Delete");
     }
 
-    public String verifyConfirmToDeletePopupText(){
-        WebElement popUpDeleteText = driver.findElement(By.xpath("//p[contains(@class, 'alert-delete-multiple-one')]"));
-        String text = popUpDeleteText.getText();
-        return text;
-    }
-
     public void clickConfirmDeleteButton(){
         clickButtonByXpath("//button[contains(@class, 'delete-multiple-confirmation-button')]", this);
     }
 
-    public void waitMessageConfirmDelete(){
+    public void waitConfirmToDeletePopupText(){
         getAlertMessage("//p[contains(@class, 'alert-delete-multiple-one')]");
 
     }
 
-    public void verifyCostumerDeletedSuccessfullyMsg(String expectedMsg){
-        WebElement deleteConfirmation = driver.findElement(By.xpath("//div[contains(@class, 'alert-success')]"));
-        String text = deleteConfirmation.getText();
+    public String verifyConfirmToDeletePopupText(){
+        WebElement popUpDeleteText = driver.findElement(By.xpath("//p[contains(@class, 'alert-delete-multiple-one')]"));
+        return popUpDeleteText.getText();
+    }
 
-        Assert.assertTrue(text.contentEquals(expectedMsg));
+    public void waitCostumerDeletedSuccessfullyMsg(){
+        getAlertMessage("//div[contains(@class, 'alert-success')]");
+
+    }
+
+    public String verifyCostumerDeletedSuccessfullyMsg(){
+        WebElement deleteConfirmation = driver.findElement(By.xpath("//div[contains(@class, 'alert-success')]//p"));
+        return deleteConfirmation.getText();
     }
 
 }

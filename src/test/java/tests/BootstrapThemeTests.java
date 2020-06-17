@@ -69,7 +69,7 @@ public class BootstrapThemeTests extends PageObjectTests {
 
         Thread.sleep(5000);
 
-        bootstrapV4ThemePage.waitMessageConfirmDelete();
+        bootstrapV4ThemePage.waitConfirmToDeletePopupText();
 
         Assert.assertEquals("Are you sure that you want to delete this 1 item?",
                 bootstrapV4ThemePage.verifyConfirmToDeletePopupText());
@@ -77,12 +77,15 @@ public class BootstrapThemeTests extends PageObjectTests {
         Thread.sleep(2000);
 
         bootstrapV4ThemePage.clickConfirmDeleteButton();
-//
-//        Thread.sleep(2000);
-//
-//        bootstrapV4ThemePage
-//                .verifyCostumerDeletedSuccessfullyMsg(
-//                        "Your data has been successfully deleted from the database.");
+
+        Thread.sleep(2000);
+
+        bootstrapV4ThemePage.waitCostumerDeletedSuccessfullyMsg();
+
+        Thread.sleep(2000);
+
+        Assert.assertEquals("Your data has been successfully deleted from the database.",
+                bootstrapV4ThemePage.verifyCostumerDeletedSuccessfullyMsg());
 
     }
 
