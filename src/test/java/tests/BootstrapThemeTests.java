@@ -74,9 +74,9 @@ public class BootstrapThemeTests extends PageObjectTests {
         Assert.assertEquals("Are you sure that you want to delete this 1 item?",
                 bootstrapV4ThemePage.verifyConfirmToDeletePopupText());
 
-//        Thread.sleep(2000);
-//
-//        bootstrapV4ThemePage.clickConfirmDeleteButton();
+        Thread.sleep(2000);
+
+        bootstrapV4ThemePage.clickConfirmDeleteButton();
 //
 //        Thread.sleep(2000);
 //

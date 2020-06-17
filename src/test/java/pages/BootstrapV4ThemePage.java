@@ -42,7 +42,7 @@ public class BootstrapV4ThemePage extends BasePage {
     }
 
     public void clickConfirmDeleteButton(){
-        clickButtonByXpath("//button[contains(@data-target, '/demo/bootstrap_theme/delete_multiple')]", this);
+        clickButtonByXpath("//button[contains(@class, 'delete-multiple-confirmation-button')]", this);
     }
 
     public void waitMessageConfirmDelete(){
