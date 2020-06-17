@@ -4,11 +4,13 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.util.concurrent.TimeUnit;
 
-public class BasePage {
+public class BasePage extends  Web{
 
     protected WebDriver driver;
 
@@ -85,13 +87,19 @@ public class BasePage {
         driver.findElement(By.id(id)).click();
     }
 
-    public <T> void selectComboBoxItem(String xpath, T type){
+    public void selectComboBoxItem(String xpath){
         driver.findElement(By.xpath(xpath)).click();
     }
 
     public String getTextById(String id) throws InterruptedException {
         driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
         return driver.findElement(By.id(id)).getText();
+    }
+
+    public void getAlertMessage(String xpath) {
+        WebDriverWait wait = new WebDriverWait(driver, 10);
+        wait.until(ExpectedConditions.visibilityOfAllElementsLocatedBy(By.xpath(xpath)));
+
     }
 
 

@@ -56,7 +56,7 @@ public class AddCustomerPage extends BasePage {
 
     public void selectEmployer(){
         clickCombobox("field_salesRepEmployeeNumber_chosen");
-        selectComboBoxItem("//div[@class='chosen-drop']//ul[@class='chosen-results']/li[8]", this);
+        selectComboBoxItem("//div[@class='chosen-drop']//ul[@class='chosen-results']/li[8]");
     }
 
     public void typeCreditLimit(String creditLimit){

@@ -5,6 +5,7 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.ui.WebDriverWait;
 import support.BasePage;
 
 public class BootstrapV4ThemePage extends BasePage {
@@ -34,15 +35,19 @@ public class BootstrapV4ThemePage extends BasePage {
         clickButtonByLinkText("Delete");
     }
 
-    public void verifyConfirmToDeletePopupText(){
+    public String verifyConfirmToDeletePopupText(){
         WebElement popUpDeleteText = driver.findElement(By.xpath("//p[contains(@class, 'alert-delete-multiple-one')]"));
         String text = popUpDeleteText.getText();
-
-        Assert.assertTrue(text.contentEquals("Are you sure that you want to delete this 1 item?"));
+        return text;
     }
 
-    public void clickPopupDeleteButton(){
-        clickButtonByXpath("//button[contains(@class, 'delete-multiple-confirmation-button')]", this);
+    public void clickConfirmDeleteButton(){
+        clickButtonByXpath("//button[contains(@data-target, '/demo/bootstrap_theme/delete_multiple')]", this);
+    }
+
+    public void waitMessageConfirmDelete(){
+        getAlertMessage("//p[contains(@class, 'alert-delete-multiple-one')]");
+
     }
 
     public void verifyCostumerDeletedSuccessfullyMsg(String expectedMsg){

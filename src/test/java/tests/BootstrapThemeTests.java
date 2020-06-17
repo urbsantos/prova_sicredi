@@ -1,5 +1,6 @@
 package tests;
 
+import org.junit.Assert;
 import org.junit.Test;
 import pages.AddCustomerPage;
 import pages.BootstrapV3ThemePage;
@@ -66,13 +67,16 @@ public class BootstrapThemeTests extends PageObjectTests {
 
         bootstrapV4ThemePage.clickSelectAllComboBox().clickDeleteButton();
 
-//        Thread.sleep(5000);
-//
-//        bootstrapV4ThemePage.verifyConfirmToDeletePopupText();
-//
+        Thread.sleep(5000);
+
+        bootstrapV4ThemePage.waitMessageConfirmDelete();
+
+        Assert.assertEquals("Are you sure that you want to delete this 1 item?",
+                bootstrapV4ThemePage.verifyConfirmToDeletePopupText());
+
 //        Thread.sleep(2000);
 //
-//        bootstrapV4ThemePage.clickPopupDeleteButton();
+//        bootstrapV4ThemePage.clickConfirmDeleteButton();
 //
 //        Thread.sleep(2000);
 //
