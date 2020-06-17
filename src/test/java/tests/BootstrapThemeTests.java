@@ -1,12 +1,17 @@
 package tests;
 
 import org.junit.Assert;
+import org.junit.FixMethodOrder;
 import org.junit.Test;
+import org.junit.runners.MethodSorters;
 import pages.AddCustomerPage;
 import pages.BootstrapV3ThemePage;
 import pages.BootstrapV4ThemePage;
 import support.PageObjectTests;
 
+import static org.junit.runners.MethodSorters.NAME_ASCENDING;
+
+@FixMethodOrder(NAME_ASCENDING)
 public class BootstrapThemeTests extends PageObjectTests {
 
     private BootstrapV3ThemePage bootstrapV3ThemePage;
@@ -22,7 +27,7 @@ public class BootstrapThemeTests extends PageObjectTests {
     }
 
     @Test
-    public void addNewCostumer() throws InterruptedException {
+    public void testOrder_2_addNewCostumer() throws InterruptedException {
         bootstrapV3ThemePage.
                 selectThemeVersion("Bootstrap V4 Theme").
                 clickAddCustomer()
@@ -43,7 +48,7 @@ public class BootstrapThemeTests extends PageObjectTests {
     }
 
     @Test
-    public void deleteCostumer() throws InterruptedException {
+    public void testOrder_1_deleteCostumer() throws InterruptedException {
         bootstrapV3ThemePage.
                 selectThemeVersion("Bootstrap V4 Theme").
                 clickAddCustomer()

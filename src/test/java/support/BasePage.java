@@ -28,35 +28,6 @@ public class BasePage extends  Web{
         return type;
     }
 
-    public <T> T selectComboBoxByXpath(String value, String xpath, T type){
-        if (value != null) {
-            WebElement chooseOption = driver.findElement(By.xpath(xpath));
-            new Select(chooseOption).selectByVisibleText(value);
-        }
-        return type;
-    }
-
-
-    public <T> T selectRadioButtonById(String value, String id, T type){
-        if(value != null){
-            WebElement radio = driver.findElement(By.id(id));
-            radio.sendKeys(Keys.SPACE);
-            radio.click();
-        }
-        return type;
-    }
-
-
-    public <T> T selectRadioButtonByXpath(String value, String xpath, T type) {
-        if (value != null) {
-            WebElement radio = driver.findElement(By.xpath(xpath));
-            radio.sendKeys(Keys.SPACE);
-            radio.click();
-        }
-        return type;
-    }
-
-
     public <T> T clickButtonByXpath(String xpath, T type){
         driver.findElement(By.xpath(xpath)).click();
         return type;
@@ -77,23 +48,12 @@ public class BasePage extends  Web{
         driver.findElement(By.id(id)).sendKeys(value);
     }
 
-    public <T> T typeFieldByXpath(String value, String xpath, T type) {
-        driver.findElement(By.xpath(xpath)).clear();
-        driver.findElement(By.xpath(xpath)).sendKeys(value);
-        return type;
-    }
-
     public void clickCombobox(String id){
         driver.findElement(By.id(id)).click();
     }
 
     public void selectComboBoxItem(String xpath){
         driver.findElement(By.xpath(xpath)).click();
-    }
-
-    public String getTextById(String id) throws InterruptedException {
-        driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
-        return driver.findElement(By.id(id)).getText();
     }
 
     public void getAlertMessage(String xpath) {
